@@ -1,0 +1,11 @@
+bin-debug/
+bin-release
+.idea/
+.wing/
+release/
+*.local
+*.map
+.idea
+**/.DS_Store
+.DS_Store
+node_modules
