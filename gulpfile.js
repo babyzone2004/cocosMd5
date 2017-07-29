@@ -3,16 +3,9 @@ var fileInline = require('gulp-file-inline');
 var concat = require('gulp-concat');
 var htmlmin = require('gulp-htmlmin');
 var rev = require('gulp-rev');
-const imagemin = require('gulp-imagemin');
 var revCollector = require('gulp-rev-collector');
 
-gulp.task('imagemin', function(cb) {
-  gulp.src('./build/web-mobile/**/*.png')
-      .pipe(imagemin())
-      .pipe(gulp.dest('./build/web-mobile/')
-      .on('end', cb));
-})
-gulp.task('cp-src',['imagemin'], function(cb) {
+gulp.task('cp-src', function(cb) {
   gulp.src(['./build/web-mobile/src/project.js'])
   .pipe(gulp.dest('./build/web-mobile/')
   .on('end', cb));
@@ -34,7 +27,6 @@ gulp.task('htmlmin', ['concat-css'], function(cb) {
   .on('end', cb));
 });
 gulp.task('resRev',['htmlmin'], function (cb) {
-  // res, thm资源文件打版本号
   gulp.src(['./build/web-mobile/**/*.js', './build/web-mobile/*.png'])
       .pipe(rev())
       .pipe(gulp.dest('./build/web-mobile/'))
